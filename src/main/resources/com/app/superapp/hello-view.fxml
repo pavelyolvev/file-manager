@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+<AnchorPane fx:id="anchorPaneRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.superapp.HelloController">
+   <children>
+      <MenuBar prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Файл">
+            <items>
+                  <Menu mnemonicParsing="false" text="Создать">
+                     <items>
+                        <MenuItem fx:id="itemCrFile" mnemonicParsing="false" onAction="#CreateFile" text="Файл" />
+                        <MenuItem fx:id="itemCrFolder" mnemonicParsing="false" onAction="#CreateFolder" text="Папку" />
+                     </items>
+                  </Menu>
+              <MenuItem fx:id="itemCopy" mnemonicParsing="false" onAction="#Copy" text="Копировать" />
+                  <MenuItem fx:id="itemPaste" mnemonicParsing="false" onAction="#Paste" text="Вставить" />
+                  <MenuItem fx:id="itemRename" mnemonicParsing="false" onAction="#Rename" text="Переименовать" />
+                  <MenuItem fx:id="itemDel" mnemonicParsing="false" onAction="#Delete" text="Удалить" />
+                  <MenuItem fx:id="itemPermDel" mnemonicParsing="false" onAction="#PermDelete" text="Перманентно удалить" />
+                  <MenuItem fx:id="itemCopyPath" mnemonicParsing="false" onAction="#CopyPath" text="Копировать путь" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Другое">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#OnProcesses" text="Процессы" />
+                  <MenuItem mnemonicParsing="false" onAction="#OnTerminal" text="Терминал" />
+                  <MenuItem mnemonicParsing="false" onAction="#OnOpenAbout" text="О программе" />
+                  <MenuItem mnemonicParsing="false" onAction="#OnOpenHotKeys" text="Справка" />
+                  <MenuItem mnemonicParsing="false" onAction="#OnSaveLogs" text="Сохранить логи" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Label fx:id="labelPath" text="Путь" />
+               </graphic>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <ToolBar layoutX="510.0" layoutY="25.0" orientation="VERTICAL" prefHeight="375.0" prefWidth="167.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+        <items>
+          <Button fx:id="buttonRefresh" mnemonicParsing="false" onAction="#AddFile" prefHeight="25.0" prefWidth="150.0" text="Обновить" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#OnRoot" prefHeight="30.0" prefWidth="150.0" text="Корень" />
+            <Label fx:id="labelSel" alignment="TOP_LEFT" prefHeight="50.0" prefWidth="150.0" text="Выбран: " wrapText="true" />
+            <Label fx:id="labelCopy" alignment="TOP_LEFT" layoutX="10.0" layoutY="68.0" prefHeight="50.0" prefWidth="150.0" text="Копируется: " wrapText="true" />
+            <Label fx:id="labelCopy1" layoutX="10.0" layoutY="94.0" text="Утилиты">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </Label>
+            <ChoiceBox fx:id="choiceBox" prefHeight="30.0" prefWidth="150.0" />
+            <Button mnemonicParsing="false" onAction="#OnStartUtil" prefHeight="30.0" prefWidth="150.0" text="Запустить" />
+        </items>
+      </ToolBar>
+  <AnchorPane layoutY="25.0" minHeight="0.0" minWidth="0.0" prefHeight="375.0" prefWidth="434.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="166.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+               <content>
+                  <FlowPane fx:id="flowPane" minHeight="0.0" minWidth="0.0" onContextMenuRequested="#OnContextMReqflowPane" onMouseClicked="#OnMouseClickedflowPane" prefHeight="349.0" prefWidth="439.0">
+                     <padding>
+                        <Insets left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </FlowPane>
+               </content>
+            </ScrollPane>
+            <TextField fx:id="searchTextField" onAction="#AddFile" prefHeight="25.0" prefWidth="370.0" promptText="Поиск" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="64.0" AnchorPane.topAnchor="0.0" />
+            <Button layoutX="369.0" mnemonicParsing="false" onAction="#AddFile" prefHeight="25.0" prefWidth="65.0" text="Поиск" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Label fx:id="selectedPathLabel" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="textField" onKeyPressed="#RenameApply" prefHeight="25.0" prefWidth="434.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="166.0" />
+   </children>
+</AnchorPane>
